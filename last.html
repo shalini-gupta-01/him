@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Anniversary!</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <!-- Animate.css for premium animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        .luxury-cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .slide {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* Premium Glow Effect */
+        .premium-glow {
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.15);
+            position: relative;
+        }
+
+        .premium-glow::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #fda4af, #f43f5e, #fb7185);
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
+        }
+
+        /* Heart Buttons */
+        .heart-button-container {
+            position: relative;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        @media(min-width: 768px) {
+            .heart-button-container {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .heart-button-container:hover {
+            transform: scale(1.1);
+        }
+
+        .heart-button-container:active {
+            transform: scale(0.92);
+        }
+
+        .heart-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: #fff1f2;
+            stroke: #fda4af;
+            stroke-width: 1.5;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.06));
+            z-index: 1;
+        }
+
+        .heart-button-container:hover .heart-bg {
+            fill: #ffe4e6;
+            stroke: #f43f5e;
+            filter: drop-shadow(0 4px 8px rgba(225, 29, 72, 0.15));
+        }
+
+        .heart-text {
+            position: relative;
+            z-index: 2;
+            color: #e11d48;
+            font-weight: 700;
+            font-size: 1.25rem;
+            transform: translateY(-2px);
+        }
+
+        /* Background Floating Particles Container */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-5vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center">
+
+    <!-- Falling Heart Background Effect -->
+    <div id="particle-container"></div>
+
+    <!-- ================= SLIDE 1: LOCK SYSTEM (SCROLL ENABLED FOR MOBILE) ================= -->
+    <div id="slide1" class="slide active items-center justify-center p-3 md:p-4 overflow-y-auto max-h-screen">
+        <div
+            class="bg-white/85 backdrop-blur-lg rounded-3xl premium-glow overflow-hidden max-w-4xl w-full flex flex-col md:flex-row border border-white/40 my-auto">
+
+            <!-- Right Side: Premium Image Panel (Full Height on Mobile Setup) -->
+            <div
+                class="w-full md:w-1/2 h-[45vh] md:h-auto relative bg-rose-100 order-1 md:order-2 overflow-hidden shrink-0">
+                <img src="1.jpeg" alt="Couples"
+                    class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-rose-950/30 via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Left Side: Locking Input & Calculator -->
+            <div id="lock-left-side"
+                class="w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col justify-center items-center text-center order-2 md:order-1 shrink-0">
+                <div id="lock-content-wrapper" class="w-full max-w-sm animate__animated animate__fadeIn">
+                    <span
+                        class="text-2xl md:text-4xl mb-0.5 block animate__animated animate__pulse animate__infinite">🔒</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-rose-600 mb-0.5 luxury-cursive tracking-wide">Our
+                        Secret Place</h2>
+                    <p class="text-gray-400 text-[9px] md:text-xs font-medium tracking-wider uppercase mb-3">Enter our
+                        special code to unlock.</p>
+
+                    <!-- Code Display Screen with Placeholder feature -->
+                    <div
+                        class="w-full bg-gradient-to-r from-rose-50 to-pink-50 border-2 border-rose-200 rounded-2xl p-1.5 mb-3 text-center text-lg md:text-2xl font-bold text-rose-600 h-11 md:h-14 flex items-center justify-center shadow-inner shadow-rose-100/50">
+                        <span id="password-display" class="tracking-[0.4em]"></span>
+                        <span id="password-placeholder" class="tracking-[0.4em] text-rose-200 block">••••</span>
+                    </div>
+
+                    <!-- Heart Calculator Grid Layout -->
+                    <div
+                        class="grid grid-cols-3 gap-y-2.5 md:gap-y-4 gap-x-3 md:gap-x-5 justify-items-center items-center py-3 px-3 bg-white/60 rounded-2xl border border-rose-100/80 shadow-sm">
+
+                        <div onclick="pressNum('1')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">1</span>
+                        </div>
+                        <div onclick="pressNum('2')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">2</span>
+                        </div>
+                        <div onclick="pressNum('3')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">3</span>
+                        </div>
+
+                        <div onclick="pressNum('4')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">4</span>
+                        </div>
+                        <div onclick="pressNum('5')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">5</span>
+                        </div>
+                        <div onclick="pressNum('6')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">6</span>
+                        </div>
+
+                        <div onclick="pressNum('7')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">7</span>
+                        </div>
+                        <div onclick="pressNum('8')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">8</span>
+                        </div>
+                        <div onclick="pressNum('9')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">9</span>
+                        </div>
+
+                        <button onclick="clearPass()"
+                            class="bg-rose-50 hover:bg-rose-100 text-rose-600 font-semibold text-[10px] md:text-xs rounded-2xl h-10 md:h-12 w-12 md:w-14 flex items-center justify-center border border-rose-200/60 shadow-sm transition-all active:scale-95">CLR</button>
+                        <div onclick="pressNum('0')" class="heart-button-container">
+                            <svg class="heart-bg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                            <span class="heart-text">0</span>
+                        </div>
+                        <button onclick="checkPassword()"
+                            class="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold text-[10px] md:text-xs rounded-2xl h-10 md:h-12 w-12 md:w-14 flex items-center justify-center shadow-md transition-all active:scale-95">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= SLIDE 2: THE SURPRISE BUTTON ================= -->
+    <div id="slide2" class="slide items-center justify-center p-4">
+        <div
+            class="bg-white/85 backdrop-blur-lg rounded-3xl premium-glow p-8 max-w-md w-full text-center animate__animated animate__zoomIn border border-white/40">
+            <span class="text-5xl md:text-6xl animate__animated animate__bounce animate__infinite mb-3 block">💝</span>
+            <h2 class="text-4xl font-bold text-rose-600 mb-3 luxury-cursive">I've made something...</h2>
+            <p class="text-xs md:text-sm text-gray-600 mb-6 leading-relaxed font-light">Every moment with you has been a
+                beautiful dream. I crafted this little space just to remind you how much you mean to me.</p>
+            <button onclick="goToSlide(3, true)"
+                class="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold text-sm tracking-wider px-8 py-3.5 rounded-full shadow-lg shadow-rose-200 transform hover:scale-105 transition-all animate__animated animate__pulse animate__infinite">
+                Click to Open Surprise ✨
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ================= SLIDE 3: WISHING ANNIVERSARY ================= -->
+    <div id="slide3" class="slide items-center justify-center p-4 text-center">
+        <div class="max-w-2xl mx-auto p-4 animate__animated animate__fadeInUp">
+            <span
+                class="text-5xl md:text-7xl block mb-2 animate__animated animate__heartBeat animate__infinite">✨🎉✨</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-rose-600 luxury-cursive mb-4 filter drop-shadow-sm p-1">Happy
+                Anniversary, My Love!</h1>
+            <p class="text-base md:text-xl text-gray-700 max-w-md mx-auto leading-relaxed font-light">
+                To the one who holds my heart, thank you for making every day brighter, sweeter, and infinitely more
+                beautiful. Here is to us, today and forever.
+            </p>
+            <div
+                class="mt-8 text-rose-400 font-medium tracking-widest text-xs animate__animated animate__fadeIn animate__delay-1s uppercase">
+                Loading your memories...</div>
+        </div>
+    </div>
+
+
+    <!-- ================= SLIDE 4: CALENDAR SLIDE (SCROLL ENABLED FOR MOBILE) ================= -->
+    <div id="slide4" class="slide items-center justify-center p-3 md:p-4 overflow-y-auto max-h-screen">
+        <div
+            class="bg-white/85 backdrop-blur-lg rounded-3xl premium-glow overflow-hidden max-w-4xl w-full flex flex-col md:flex-row animate__animated animate__fadeIn border border-white/40 my-auto">
+            <!-- Left Side: Beautiful Content -->
+            <div
+                class="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-center md:text-left order-2 md:order-1 shrink-0">
+                <span class="text-rose-400 font-semibold tracking-widest text-[10px] uppercase mb-0.5">The Golden
+                    Date</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-rose-600 luxury-cursive mb-2">"The day it became
+                    official"</h2>
+                <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Time stopped, the stars aligned,
+                    and my universe finally made complete sense. That's the day our forever journey officially began.
+                </p>
+            </div>
+
+            <!-- Right Side: Top Image & Bottom Calendar -->
+            <div
+                class="w-full md:w-1/2 flex flex-col order-1 md:order-2 border-b md:border-b-0 md:border-l border-rose-100 shrink-0">
+                <!-- Top Image -->
+                <!-- <div class="h-full md:h-64 bg-rose-100 overflow-hidden"> -->
+
+                    <div class="h-full w-full bg-rose-100 overflow-hidden">
+                        <img src="3.jpeg" alt="Our Story Mobile"
+                            class="block md:hidden w-full h-full object-cover">
+
+                        <img src="5.jpeg" alt="Our Story Desktop"
+                            class="hidden md:block w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                    </div>
+
+
+                    <!-- <img src="3.jpeg" alt="Romantic"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div> -->
+                <!-- Bottom Calendar (April 2026) -->
+                <div class="p-4 md:p-6 bg-gradient-to-b from-rose-50/30 to-rose-100/20">
+                    <div class="text-center font-bold text-rose-700 mb-2 text-xs md:text-sm tracking-widest uppercase">
+                        April 2026</div>
+                    <div
+                        class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-gray-400 mb-1.5 uppercase tracking-wider">
+                        <div>Su</div>
+                        <div>Mo</div>
+                        <div>Tu</div>
+                        <div>We</div>
+                        <div>Th</div>
+                        <div>Fr</div>
+                        <div>Sa</div>
+                    </div>
+                    <div
+                        class="grid grid-cols-7 gap-y-2 gap-x-1 text-center text-xs text-gray-700 font-medium items-center">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                        <div>8</div>
+                        <div>9</div>
+                        <div>10</div>
+                        <div>11</div>
+                        <div>12</div>
+                        <div>13</div>
+                        <div>14</div>
+                        <div>15</div>
+                        <div>16</div>
+                        <div>17</div>
+                        <div>18</div>
+                        <div>19</div>
+                        <div>20</div>
+                        <div>21</div>
+                        <div>22</div>
+                        <div>23</div>
+                        <div>24</div>
+
+                        <!-- Perfectly Centered Calendar Heart Box -->
+                        <div class="relative flex items-center justify-center w-7 h-7 md:w-8 md:h-8 mx-auto z-10">
+                            <span
+                                class="absolute text-rose-500/20 text-3xl md:text-4xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[52%] pointer-events-none drop-shadow-sm animate-pulse">❤️</span>
+                            <span class="relative font-bold text-rose-700 text-xs z-20">25</span>
+                        </div>
+
+                        <div>26</div>
+                        <div>27</div>
+                        <div>28</div>
+                        <div>29</div>
+                        <div>30</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= SLIDE 5: PHOTO GALLERY (MOBILE SCROLL ENABLED) ================= -->
+    <div id="slide5" class="slide items-center justify-center p-4 overflow-y-auto max-h-screen">
+        <div class="max-w-4xl w-full text-center p-2 my-auto">
+            <h2
+                class="text-3xl md:text-5xl font-bold text-rose-600 luxury-cursive mb-6 md:mb-10 animate__animated animate__fadeInDown drop-shadow-sm filter">
+                Our Beautiful Journey Continues...</h2>
+
+            <!-- 3 Image Gallery Grid Layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto pb-10 sm:pb-0">
+                <div
+                    class="bg-white p-2.5 rounded-2xl shadow-xl border border-rose-100/40 transform sm:rotate-[-3deg] hover:rotate-0 hover:scale-105 transition-all duration-300 animate__animated animate__fadeInUp animate__delay-1s">
+                    <img src="4.jpeg" alt="Memory 1"
+                        class="w-full h-48 md:h-64 object-cover rounded-xl filter brightness-95">
+                    <p
+                        class="mt-2 text-xl md:text-lg text-rose-500 luxury-cursive text-center tracking-wider font-semibold">
+                        Laughs Shared</p>
+                </div>
+                <div
+                    class="bg-white p-2.5 rounded-2xl shadow-xl border border-rose-100/40 transform sm:rotate-[4deg] hover:rotate-0 hover:scale-105 transition-all duration-300 animate__animated animate__fadeInUp animate__delay-2s">
+                    <img src="5.jpeg" alt="Memory 2"
+                        class="w-full h-48 md:h-64 object-cover rounded-xl filter brightness-95">
+                    <p
+                        class="mt-2 text-xl md:text-lg text-rose-500 luxury-cursive text-center tracking-wider font-semibold">
+                        Promises Kept</p>
+                </div>
+                <div
+                    class="bg-white p-2.5 rounded-2xl shadow-xl border border-rose-100/40 transform sm:rotate-[-1deg] hover:rotate-0 hover:scale-105 transition-all duration-300 animate__animated animate__fadeInUp animate__delay-3s">
+                    <img src="6.jpeg" alt="Memory 3"
+                        class="w-full h-48 md:h-64 object-cover rounded-xl filter brightness-95">
+                    <p
+                        class="mt-2 text-xl md:text-lg text-rose-500 luxury-cursive text-center tracking-wider font-semibold">
+                        Infinite Love</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        const CORRECT_PASSWORD = "2504";
+        let currentInput = "";
+
+        // Background Heart Particle Generator
+        function createParticles() {
+            const container = document.getElementById('particle-container');
+            const icons = ['❤️', '💖', '🌸', '✨', '💕'];
+            const count = 20;
+
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.fontSize = (Math.random() * 1.0 + 0.5) + 'rem';
+
+                const duration = Math.random() * 8 + 6;
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = '-' + (Math.random() * duration) + 's';
+
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        function updateDisplayState() {
+            const display = document.getElementById('password-display');
+            const placeholder = document.getElementById('password-placeholder');
+
+            if (currentInput.length > 0) {
+                display.innerText = "*".repeat(currentInput.length);
+                placeholder.style.display = "none";
+            } else {
+                display.innerText = "";
+                placeholder.style.display = "block";
+            }
+        }
+
+        function pressNum(num) {
+            if (currentInput.length < 8) {
+                currentInput += num;
+                updateDisplayState();
+            }
+        }
+
+        function clearPass() {
+            currentInput = "";
+            updateDisplayState();
+        }
+
+        function goToSlide(slideNumber, autoAdvanceNext = false) {
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            const activeSlide = document.getElementById(`slide${slideNumber}`);
+            activeSlide.classList.add('active');
+
+            if (autoAdvanceNext) {
+                if (slideNumber === 3) {
+                    setTimeout(() => { goToSlide(4, true); }, 4200);
+                } else if (slideNumber === 4) {
+                    setTimeout(() => { goToSlide(5, false); }, 5200);
+                }
+            }
+        }
+
+        function checkPassword() {
+            const leftSide = document.getElementById('lock-left-side');
+            const contentWrapper = document.getElementById('lock-content-wrapper');
+
+            if (currentInput === CORRECT_PASSWORD) {
+                goToSlide(2);
+            } else {
+                contentWrapper.classList.remove('animate__fadeIn');
+                contentWrapper.classList.add('animate__shakeX');
+
+                setTimeout(() => {
+                    leftSide.innerHTML = `
+                        <div class="animate__animated animate__bounceIn text-center max-w-xs py-4">
+                            <span class="text-5xl block mb-2">🙈</span>
+                            <h3 class="text-2xl font-bold text-rose-600 luxury-cursive mb-1">Incorrect Password</h3>
+                            <p class="text-gray-400 mb-5 text-[10px] font-medium uppercase tracking-wider">That code didn't unlock my heart!</p>
+                            <button onclick="window.location.reload()" class="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold px-6 py-2.5 rounded-full shadow-md transition-all text-xs tracking-wider uppercase active:scale-95">
+                                Try Again 🔄
+                            </button>
+                        </div>
+                    `;
+                }, 300);
+            }
+        }
+    </script>
+</body>
+
+</html>
